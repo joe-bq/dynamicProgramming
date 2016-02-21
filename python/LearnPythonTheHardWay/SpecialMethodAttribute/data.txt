@@ -1,0 +1,3 @@
+John Smith::37::Springfield, Massachusetts
+Ellen Nelle::25::Springfield, Connecticut
+Dale McGladdery::29::Springfield, Hawaii

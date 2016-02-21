@@ -1,0 +1,37 @@
+Welcome to the code for "The Well-Grounded Rubyist!"
+
+To find your way around, you need to know a few things.
+
+* Whenever you see Listing x.y in the text (like, Listing 4.3), 
+  that listing is in the file called x_y.rb (like, 4_3.rb). 
+
+* The many examples that are not officially "Listings" in the
+  text are included here as snippets. They are numbered by
+  chapter, and within chapter consecutively by letter -- for
+  example, 12_snippet_f.rb is the sixth snippet in chapter 12. 
+
+* "Snippet" is a rather vague term. I've collected those that
+  I think you might actually want to run. I have not included
+  any irb transcriptions, and there are some very short ones that
+  it really isn't worth putting in a file. 
+
+* A certain number of examples are also included in more explicitly
+  named files. I've tried to do that wherever the text actually tells
+  you to create a file of a certain name. It's possible I've missed
+  a couple, but you should be able to find the code among the "snippet"
+  files for the appropriate chapter if you don't see a file with the
+  actual name. 
+
+* There are a few files with hybrid names, like 6_block_local.rb. They
+  should be easy to place as to chapter and which example they are.
+
+* When you see things like "#1" or "#A" scattered around the code,
+  those are left over from marking the code up for the "cueballs" and
+  annotations. They're all comments, so they shouldn't affect the
+  running of the code. 
+
+Enjoy, and please let us know if you spot problems (things that don't
+run, differences between the files and the book, etc.). Thanks!
+
+
+David

@@ -1,0 +1,361 @@
+# author:
+#  Joe 
+# file:
+#   find_oqlsource_dup.py
+# description:
+#   this file is to process xml and find if two fields are duplicate
+# reference:
+#   for the script to work, the following tutorial on the python has been consulted.
+#     xml.etree.ElementTree  - The ElementTree XML API :  http://docs.python.org/2/library/xml.etree.elementtree.html
+
+
+xml_content = """
+        <ProjectedColumnNames type="list" listof="string">
+            <i value="latest"/>
+            <i value="Account2ID"/>
+            <i value="Account2LegalEntity"/>
+            <i value="Account2Name"/>
+            <i value="Account2NTAPS"/>
+            <i value="Account2RDMID"/>
+            <i value="AccountID"/>
+            <i value="AccountLegalEntity"/>
+            <i value="AccountName"/>
+            <i value="AccountNTAPS"/>
+            <i value="AccountRDMID"/>
+            <i value="AccruedInterest"/>
+            <i value="AccruedInterestIsOverridden"/>
+            <i value="AnalyticsStatus"/>
+            <i value="ApprovalBy"/>
+            <i value="ApprovalStatus"/>
+            <i value="AssetClass"/>
+            <i value="BenchmarkCusip"/>
+            <i value="BenchmarkIsin"/>
+            <i value="BenchmarkSecurityId"/>
+            <i value="BenchmarkSecurityName"/>
+            <i value="BenchmarkSpread"/>
+            <i value="BookFOBK"/>
+            <i value="BookID"/>
+            <i value="BookIDType"/>
+            <i value="BookName"/>
+            <i value="BookNTAPS"/>
+            <i value="BookRegion"/>
+            <i value="BookSTBK"/>
+            <i value="Broker"/>
+            <i value="BuySell"/>
+            <i value="ClearingHouse"/>
+            <i value="ClusterTimestamp"/>
+            <i value="Comment"/>
+            <i value="ContraBookId"/>
+            <i value="ContraBookIdType"/>
+            <i value="ContraBookName"/>
+            <i value="ContraBookNTAPS"/>
+            <i value="ContraBookRegion"/>
+            <i value="ContraBookSTBK"/>
+            <i value="ContraLegalEntity"/>
+            <i value="CounterpartyID"/>
+            <i value="CounterpartyIDType"/>
+            <i value="CounterpartyLegalEntity"/>
+            <i value="CounterpartyLVCC"/>
+            <i value="CounterpartyMPID"/>
+            <i value="CounterpartyName"/>
+            <i value="CounterpartyNTAPS"/>
+            <i value="CounterpartyRDMID"/>
+            <i value="CounterpartySubType"/>
+            <i value="CounterpartyTotoroName"/>
+            <i value="Coupon"/>
+            <i value="Created"/>
+            <i value="Currency"/>
+            <i value="CurrentFactor"/>
+            <i value="DestinationError"/>
+            <i value="DestinationID"/>
+            <i value="DestinationStatus"/>
+            <i value="DestinationSystem"/>
+            <i value="DestinationVersion"/>
+            <i value="Discount"/>
+            <i value="DoNotReportToTrace"/>
+            <i value="DoNotSendToDownStream"/>
+            <i value="EnteredBy"/>
+            <i value="EntryDateTime"/>
+            <i value="EntrySystem"/>
+            <i value="EntrySystemId"/>
+            <i value="EntrySystemVersion"/>
+            <i value="EventID"/>
+            <i value="EventType"/>
+            <i value="ExecutionDateTime"/>
+            <i value="ExternalOrderId"/>
+            <i value="ExternalSubsystem"/>
+            <i value="ExternalSystem"/>
+            <i value="ExternalSystemId"/>
+            <i value="LastDeliveryDate"/>
+            <i value="LegalEntity"/>
+            <i value="Location"/>
+            <i value="LocalCreated"/>
+            <i value="LocalUpdated"/>
+            <i value="MatchStatus"/>
+            <i value="MatchStatusCATS"/>
+            <i value="MatchTradeId"/>
+            <i value="Maturity"/>
+            <i value="Notional"/>
+            <i value="NumContracts"/>
+            <i value="OnyxDestination"/>
+            <i value="OnyxDestinationStatus"/>
+            <i value="OnyxDestinationError"/>
+            <i value="OnyxDestinationID"/>
+            <i value="OnyxDestinationUser"/>
+            <i value="OnyxClearingHouse"/>
+            <i value="OnyxClearingHouseStatus"/>
+            <i value="OnyxException"/>
+            <i value="OnyxDirection"/>
+            <i value="OnyxNotional"/>
+            <i value="OnyxStartDate"/>
+            <i value="OnyxMaturityDate"/>
+            <i value="OnyxInstrument"/>
+            <i value="OnyxProduct"/>
+            <i value="OnyxRate"/>
+            <i value="OnyxPrice"/>
+            <i value="OnyxUpfrontFee"/>
+            <i value="OnyxDaycountConvention"/>
+            <i value="OnyxBusinessCalendar"/>
+            <i value="OnyxSettings"/>
+            <i value="OnyxBusinessCalendar"/>
+            <i value="OnyxTradeDate"/>
+            <i value="Perpetual"/>
+            <i value="PriceFormat"/>
+            <i value="PriceTraded"/>
+            <i value="PriceType"/>
+            <i value="Quantity"/>
+            <i value="ReferenceDataStatus"/>
+            <i value="RFQBookID"/>
+            <i value="RFQBookIDType"/>
+            <i value="RFQBookSTBK"/>
+            <i value="RiskKey"/>
+            <i value="SalesCommissionCurrency"/>
+            <i value="SalesCommissionSubType"/>
+            <i value="SalesCommissionTotal"/>
+            <i value="SalesCredit"/>
+            <i value="SalesCreditAdditional"/>
+            <i value="SalesCreditIsZero"/>
+            <i value="SalesID"/>
+            <i value="SalesIDType"/>
+            <i value="Salesman"/>
+            <i value="SalesmanC3SC"/>
+            <i value="SalesMarkup"/>
+            <i value="SalesMatchStatus"/>
+            <i value="Seasoned"/>
+            <i value="SecurityBBID"/>
+            <i value="SecurityBBPK"/>
+            <i value="SecurityBPKY"/>
+            <i value="SecurityCUSIP"/>
+            <i value="SecurityID"/>
+            <i value="SecurityIDType"/>
+            <i value="SecurityISIN"/>
+            <i value="SecurityName"/>
+            <i value="SecurityPDP"/>
+            <i value="SecurityRIC"/>
+            <i value="SecurityTotoroName"/>
+            <i value="SecurityType"/>
+            <i value="Series"/>
+            <i value="SetDate"/>
+            <i value="SetDelay"/>
+            <i value="SettlementCurrency"/>
+            <i value="SettlementError"/>
+            <i value="SettlementFXRate"/>
+            <i value="SettlementID"/>
+            <i value="SettlementStatus"/>
+            <i value="SettlementSystem"/>
+            <i value="SettlementVersion"/>
+            <i value="SourceSecurityID"/>
+            <i value="SourceSystem"/>
+            <i value="SuggestedMatch"/>
+            <i value="Ticker"/>
+            <i value="TicketClass"/>
+            <i value="TicketCompletionStatus"/>
+            <i value="TicketID"/>
+            <i value="TicketSubType"/>
+            <i value="TicketType"/>
+            <i value="Timestamp"/>
+            <i value="TraceEligible"/>
+            <i value="TraceMarketIndicator"/>
+            <i value="TracePriceOverride"/>
+            <i value="TraceSpecialPrice"/>
+            <i value="TraceWeightedAvgPrice"/>
+            <i value="TradeDate"/>
+            <i value="TradeGroupId"/>
+            <i value="TradeId"/>
+            <i value="TradeOperation"/>
+            <i value="Trader"/>
+            <i value="TraderC3DC"/>
+            <i value="TraderSystem"/>
+            <i value="TradeSettleDate"/>
+            <i value="TradeSettleDays"/>
+            <i value="TradeSource"/>
+            <i value="TradeStateVersion"/>
+            <i value="TradeVersion"/>
+            <i value="Updated"/>
+            <i value="ValuationFunction"/>
+            <i value="WashAccount2ID"/>
+            <i value="WashAccount2LegalEntity"/>
+            <i value="WashAccount2Name"/>
+            <i value="WashAccount2NTAPS"/>
+            <i value="WashAccount2RDMID"/>
+            <i value="WashAccountID"/>
+            <i value="WashAccountLegalEntity"/>
+            <i value="WashAccountName"/>
+            <i value="WashAccountNTAPS"/>
+            <i value="WashAccountRDMID"/>
+            <i value="WashBook2FOBK"/>
+            <i value="WashBook2ID"/>
+            <i value="WashBook2LegalEntity"/>
+            <i value="WashBook2Name"/>
+            <i value="WashBook2NTAPS"/>
+            <i value="WashBook2STBK"/>
+            <i value="WashBookFOBK"/>
+            <i value="WashBookID"/>
+            <i value="WashBookLegalEntity"/>
+            <i value="WashBookName"/>
+            <i value="WashBookNTAPS"/>
+            <i value="WashBookSTBK"/>
+            <i value="WashParentTradeId"/>
+            <i value="Yield"/>
+            <i value="BrokerageAmount"/>
+            <i value="BrokerageCommissionClose"/>
+            <i value="BrokerageCommissionOpen"/>
+            <i value="BrokerageCurrency"/>
+            <i value="BrokerGiveUp"/>
+            <i value="CallOrPut"/>
+            <i value="EntrySubsystem"/>
+            <i value="Exchange"/>
+            <i value="SalesmanName"/>
+            <i value="SecurityMeigara"/>
+            <i value="TraderName"/>
+            <i value="AccruedInterestType"/>
+            <i value="BrokerageAmountBakedIn"/>
+            <i value="DepositCondition"/>
+            <i value="NetPrincipal"/>
+            <i value="PriceStripped"/>
+            <i value="TaxableIndicator"/>
+            <i value="AtsukaishaCode"/>
+            <i value="BaseCommissionRate"/>
+            <i value="BasePrice"/>
+            <i value="BasePriceType"/>
+            <i value="BaseYield"/>
+            <i value="BaseYieldType"/>
+            <i value="BranchSalesman"/>
+            <i value="ConversionFactor"/>
+            <i value="ExerciseEndDateTime"/>
+            <i value="ExerciseStartDate"/>
+            <i value="FailBuyIn"/>
+            <i value="FinalFuturesPrice"/>
+            <i value="FITSCounterpartyClass"/>
+            <i value="FXCommissionRate"/>
+            <i value="FXCommissionTotal"/>
+            <i value="FXTradeId"/>
+            <i value="FxdCoupFreq"/>
+            <i value="JPYAccruedInterest"/>
+            <i value="JPYFXRate"/>
+            <i value="JPYFXType"/>
+            <i value="JPYNetPrincipal"/>
+            <i value="JPYPrincipal"/>
+            <i value="LastClosingPrice"/>
+            <i value="MarketIndicator"/>
+            <i value="NextCouponDate"/>
+            <i value="OptionType"/>
+            <i value="PrevCouponDate"/>
+            <i value="PriceTradedType"/>
+            <i value="PrincipalIsOverridden"/>
+            <i value="Reserved"/>
+            <i value="SettlementAccountType"/>
+            <i value="Spread"/>
+            <i value="SetDate"/>
+            <i value="StrategyBuySell"/>
+            <i value="StrategyNotional"/>
+            <i value="StrategyPayReceive"/>
+            <i value="StrategySecurityID"/>
+            <i value="Ticker"/>
+            <i value="TicketClass"/>
+            <i value="TicketCompletionStatus"/>
+            <i value="TicketSubType"/>
+            <i value="TicketType"/>
+            <i value="Tenor"/>
+            <i value="TotalCommissionAmount"/>
+            <i value="TotalCommissionRate"/>
+            <i value="Totoro.AvgRateSetType"/>
+            <i value="Totoro.BusinessEvent"/>
+            <i value="Totoro.DomCompoundPattern"/>
+            <i value="Totoro.DomCompoundMargin"/>
+            <i value="Totoro.RollDay"/>
+            <i value="Totoro.DomMargin"/>
+            <i value="Totoro.DomAvgRateSetType"/>
+            <i value="Totoro.FgnCoupFreq"/>
+            <i value="Totoro.FltCoupFreq"/>
+            <i value="Totoro.FxdBC"/>
+            <i value="Totoro.FxdDC"/>
+            <i value="Totoro.FxdCoupFreq"/>
+            <i value="Totoro.Margin"/>
+            <i value="Totoro.FgnMargin"/>
+            <i value="Totoro.DomBC"/>
+            <i value="Totoro.DomDC"/>
+            <i value="Totoro.DomCoupFreq"/>
+            <i value="Totoro.DomSetDelay"/>
+            <i value="Totoro.DomSetDelayHols"/>
+            <i value="Totoro.DomSetIndex"/>
+            <i value="Totoro.DomSettings"/>
+            <i value="Totoro.Holidays"/>
+            <i value="Totoro.PayDelay"/>
+            <i value="Totoro.Rounding"/>
+            <i value="Totoro.SetDelay"/>
+            <i value="Totoro.SetDelayHols"/>
+            <i value="Totoro.SetIndex"/>
+            <i value="Totoro.Settings"/>
+            <i value="Totoro.CompoundPattern"/>
+            <i value="Totoro.CompoundMargin"/>
+            <i value="TradeModelIsJapan"/>
+            <i value="YieldType"/>
+            <i value="DualCurrencyFXRate"/>
+            <i value="DualCurrencyNetPrincipal"/>
+            <i value="Principal"/>
+            <i value="SalesmanNameKanji"/>
+            <i value="AccrualAmount"/>
+            <i value="AmendmentReason"/>
+            <i value="OriginalTradeId"/>
+            <i value="PackageEventCount"/>
+            <i value="PackageEventId"/>
+            <i value="PackageId"/>
+            <i value="PreviousTradeId"/>
+            <i value="PriceTradedClean"/>
+            <i value="PrincipalClean"/>
+            <i value="YieldCompound"/>
+            <i value="YieldSimple"/>
+            <i value="AccruedDays"/>
+            <i value="EventSubType"/>
+            <i value="ForeignBondIsTaxable"/>
+            <i value="Strike"/>
+            <i value="UnderlyingDeliveryDays"/>
+        </ProjectedColumnNames>
+"""
+
+import xml.etree.ElementTree as ET
+
+tree = ET.fromstring(xml_content)
+
+# root = tree.getroot()
+root = tree
+
+fields_list = []
+for node in root.iter('i'):
+	if node.get('value') is None:
+		print "Find an error!", ET.dump(node)
+	fields_list.append(node.get("value"))
+if fields_list.count == 0: 
+	print "not found any fields?"
+
+#for node in sorted(fields_list):
+#	print node
+
+for i in range(len(fields_list)):
+      if i < len(fields_list) - 1:
+            if fields_list[i] == fields_list[i + 1]:
+                  print "Find a duplicate, value = ", fields_list[i]
+                  break
+else:
+      print "No duplicate has been found!"

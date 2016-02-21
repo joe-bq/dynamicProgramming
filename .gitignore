@@ -1,0 +1,6 @@
+*.rar
+*.tgz
+*.zip
+bin/
+obj/
+Debug/

@@ -1,0 +1,25 @@
+        <AvailableColumns type="list" listof=".Nexia.GuiToolkit.ObjectModel.Grid.Configurations.ColumnDefinitionConfig">
+            <i>
+                <Id value="ApprovalStatus"/>
+                <LocalizationCaptionID type="null"/>
+                <Caption value="ApprovalStatus"/>
+                <Value value="[ApprovalStatus]"/>
+                <Description type="null"/>
+                <ToolTip type="null"/>
+                <IsDictionary type="bool" value="true"/>
+                <IsCalculated type="bool" value="false"/>
+                <IsReadOnly type="bool" value="true"/>
+                <DataType value="System.String"/>
+                <IsCustom type="bool" value="false"/>
+                <ItemsSource type="null"/>
+                <ItemsSourceItemType type="null"/>
+                <ItemsSourceMember type="null"/>
+                <ItemsSourceRowMember type="null"/>
+                <ItemsSourceDisplayMember type="null"/>
+                <ItemsSourceValueMember type="null"/>
+                <ItemsSourceDataProviderType type="null"/>
+                <ItemsSourceDataProviderName type="null"/>
+                <TemplateName type="null"/>
+                <ToolTipValuePath type="null"/>
+            </i>
+        </AvailableColumns>
