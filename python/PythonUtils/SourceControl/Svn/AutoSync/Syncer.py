@@ -210,7 +210,7 @@ USAGE
             print(ns.errmsg, sys.stderr)
             sys.exit(SUCCESS)
         
-        # REMOVE: C:\dev\TEMP "http://eusvnf.nomura.com:7100/SVF/repos/fidtradeprocsrc/trades/Tickets-Rates/trunk"
+        # REMOVE: C:\dev\TEMP "http://path/to/your/repository/trunk"
         if root is None or root == '':
             raise ValueError("root is None or empty")
         

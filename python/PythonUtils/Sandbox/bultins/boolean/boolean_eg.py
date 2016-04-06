@@ -1,7 +1,7 @@
 '''
 Created on Oct 17, 2013
 
-@author: wangboqi
+@author: author
 '''
 
 

@@ -1,7 +1,7 @@
 '''
 Created on Oct 17, 2013
 
-@author: wangboqi
+@author: author
 
 REMARKS: in python, you will never find yourself in need of a multiple constructor, if you ever find yourself in such a situation, doubt  your design first.
 

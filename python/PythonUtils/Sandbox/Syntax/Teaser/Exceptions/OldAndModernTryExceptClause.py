@@ -1,7 +1,7 @@
 '''
 Created on Oct 17, 2013
 
-@author: wangboqi
+@author: author
 
 REFERENCES: 
 Errors and Exceptions: http://docs.python.org/2/tutorial/errors.html

@@ -1,7 +1,7 @@
 '''
 Created on Nov 5, 2013
 
-@author: wangboqi
+@author: author
 '''
 
 currencies = ["USD",

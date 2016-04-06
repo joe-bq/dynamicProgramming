@@ -1,7 +1,7 @@
 '''
 Created on Oct 16, 2013
 
-@author: wangboqi
+@author: author
 '''
 
 # please check the following site: http://docs.python.org/2/howto/argparse.html

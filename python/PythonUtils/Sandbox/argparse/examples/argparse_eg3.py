@@ -1,7 +1,7 @@
 '''
 Created on Oct 17, 2013
 
-@author: wangboqi
+@author: author
 
 a clone of the example of argparse_eg2.py, with one change to the type of verbosity option argument. 
 the type of the verbosity is changed from int to true..
